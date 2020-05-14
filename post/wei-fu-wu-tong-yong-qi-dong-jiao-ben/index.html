@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Gridea | 大头虾瞎整</title>
+<title>微服务通用启动脚本 | 大头虾瞎整</title>
 <meta name="description" content="佛魔生无定性，一念春风化雨，一念天塌地陷">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -78,55 +78,128 @@
 
 
       <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">微服务通用启动脚本</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-05-14</span>
+            
+          </div>
+          <div class="post-content">
+            <pre><code class="language-shell">#!/bin/sh
+## java env
+export JAVA_HOME=/data/soft/jdk1.8.0_181
+export JRE_HOME=$JAVA_HOME/jre
 
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> Gridea
-          </h2> 
+API_NAME=$2
+JAR_NAME=$API_NAME\.jar
+#PID  代表是PID文件
+PID=$API_NAME\.pid
+
+#使用说明，用来提示输入参数
+usage() {
+    echo &quot;Usage: sh 执行脚本.sh [start|stop|restart|status]&quot;
+    exit 1
+}
+
+#检查程序是否在运行
+is_exist(){
+  pid=`ps -ef|grep $JAR_NAME|grep -v grep|awk '{print $2}' `
+  #如果不存在返回1，存在返回0     
+  if [ -z &quot;${pid}&quot; ]; then
+   return 1
+  else
+    return 0
+  fi
+}
+
+#启动方法
+start(){
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then 
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is already running PID=${pid} &lt;&lt;&lt;&quot; 
+  else 
+    nohup $JRE_HOME/bin/java -Xms256m -Xmx512m -jar $JAR_NAME &gt;/dev/null 2&gt;&amp;1 &amp;
+    echo $! &gt; $PID
+    echo &quot;&gt;&gt;&gt; start $JAR_NAME successed PID=$! &lt;&lt;&lt;&quot; 
+   fi
+  }
+
+#停止方法
+stop(){
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then
+    pidf=$(cat $PID)
+    #echo &quot;$pidf&quot;  
+    echo &quot;&gt;&gt;&gt; api PID = $pidf begin kill $pidf &lt;&lt;&lt;&quot;
+    kill $pidf
+    rm -rf $PID
+    sleep 2
+  fi
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then 
+    echo &quot;&gt;&gt;&gt; api 2 PID = $pid begin kill -9 $pid  &lt;&lt;&lt;&quot;
+    kill -9  $pid
+    sleep 2
+    echo &quot;&gt;&gt;&gt; $JAR_NAME process stopped &lt;&lt;&lt;&quot;  
+  else
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is not running &lt;&lt;&lt;&quot;
+  fi  
+}
+
+#输出运行状态
+status(){
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is running PID is ${pid} &lt;&lt;&lt;&quot;
+  else
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is not running &lt;&lt;&lt;&quot;
+  fi
+}
+
+#重启
+restart(){
+  stop
+  start
+}
+
+#根据输入参数，选择执行对应方法，不输入则执行使用说明
+case &quot;$1&quot; in
+  &quot;start&quot;)
+    start
+    ;;
+  &quot;stop&quot;)
+    stop
+    ;;
+  &quot;status&quot;)
+    status
+    ;;
+  &quot;restart&quot;)
+    restart
+    ;;
+  *)
+    usage
+    ;;
+esac
+exit 0
+
+</code></pre>
+
+          </div>
         </div>
 
         
-<section class="post-item">
-    <div class="content">
-      <a href="https://bigheadxia.github.io/post/hello-gridea/">
-        <h2 class="post-title">Hello Gridea</h2>
-      </a>
-      <div class="post-abstract">
-        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
+          <div class="next-post">
+            <a class="purple-link" href="https://bigheadxia.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                下一篇：Hello Gridea
+              </h3>
+            </a>
+          </div>
+          
       </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2018-12-12</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://bigheadxia.github.io/tag/3RE8t7i2U/">
-                Gridea
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-      <a href="https://bigheadxia.github.io/post/hello-gridea/">
-        <div class="feature-container" style="background-image: url('https://bigheadxia.github.io/post-images/hello-gridea.png')">
-        </div>
-      </a>
-    
-  </section>
 
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
+      
 
       <div class="site-footer">
   <div class="slogan">佛魔生无定性，一念春风化雨，一念天塌地陷</div>

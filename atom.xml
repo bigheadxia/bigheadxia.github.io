@@ -1,15 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bigheadxia.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-05-14T08:48:37.545Z</updated>
+    <title>大头虾瞎整</title>
+    <updated>2020-05-14T09:08:17.031Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://bigheadxia.github.io"/>
     <link rel="self" href="https://bigheadxia.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>佛魔生无定性，一念春风化雨，一念天塌地陷</subtitle>
     <logo>https://bigheadxia.github.io/images/avatar.png</logo>
     <icon>https://bigheadxia.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, 大头虾瞎整</rights>
+    <entry>
+        <title type="html"><![CDATA[微服务通用启动脚本]]></title>
+        <id>https://bigheadxia.github.io/post/wei-fu-wu-tong-yong-qi-dong-jiao-ben/</id>
+        <link href="https://bigheadxia.github.io/post/wei-fu-wu-tong-yong-qi-dong-jiao-ben/">
+        </link>
+        <updated>2020-05-14T09:06:11.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-shell">#!/bin/sh
+## java env
+export JAVA_HOME=/data/soft/jdk1.8.0_181
+export JRE_HOME=$JAVA_HOME/jre
+
+API_NAME=$2
+JAR_NAME=$API_NAME\.jar
+#PID  代表是PID文件
+PID=$API_NAME\.pid
+
+#使用说明，用来提示输入参数
+usage() {
+    echo &quot;Usage: sh 执行脚本.sh [start|stop|restart|status]&quot;
+    exit 1
+}
+
+#检查程序是否在运行
+is_exist(){
+  pid=`ps -ef|grep $JAR_NAME|grep -v grep|awk '{print $2}' `
+  #如果不存在返回1，存在返回0     
+  if [ -z &quot;${pid}&quot; ]; then
+   return 1
+  else
+    return 0
+  fi
+}
+
+#启动方法
+start(){
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then 
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is already running PID=${pid} &lt;&lt;&lt;&quot; 
+  else 
+    nohup $JRE_HOME/bin/java -Xms256m -Xmx512m -jar $JAR_NAME &gt;/dev/null 2&gt;&amp;1 &amp;
+    echo $! &gt; $PID
+    echo &quot;&gt;&gt;&gt; start $JAR_NAME successed PID=$! &lt;&lt;&lt;&quot; 
+   fi
+  }
+
+#停止方法
+stop(){
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then
+    pidf=$(cat $PID)
+    #echo &quot;$pidf&quot;  
+    echo &quot;&gt;&gt;&gt; api PID = $pidf begin kill $pidf &lt;&lt;&lt;&quot;
+    kill $pidf
+    rm -rf $PID
+    sleep 2
+  fi
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then 
+    echo &quot;&gt;&gt;&gt; api 2 PID = $pid begin kill -9 $pid  &lt;&lt;&lt;&quot;
+    kill -9  $pid
+    sleep 2
+    echo &quot;&gt;&gt;&gt; $JAR_NAME process stopped &lt;&lt;&lt;&quot;  
+  else
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is not running &lt;&lt;&lt;&quot;
+  fi  
+}
+
+#输出运行状态
+status(){
+  is_exist
+  if [ $? -eq &quot;0&quot; ]; then
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is running PID is ${pid} &lt;&lt;&lt;&quot;
+  else
+    echo &quot;&gt;&gt;&gt; ${JAR_NAME} is not running &lt;&lt;&lt;&quot;
+  fi
+}
+
+#重启
+restart(){
+  stop
+  start
+}
+
+#根据输入参数，选择执行对应方法，不输入则执行使用说明
+case &quot;$1&quot; in
+  &quot;start&quot;)
+    start
+    ;;
+  &quot;stop&quot;)
+    stop
+    ;;
+  &quot;status&quot;)
+    status
+    ;;
+  &quot;restart&quot;)
+    restart
+    ;;
+  *)
+    usage
+    ;;
+esac
+exit 0
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://bigheadxia.github.io/post/hello-gridea/</id>
