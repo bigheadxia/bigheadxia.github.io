@@ -23,9 +23,14 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <script>
-        function loading() {
-            document.getElementsByClassName('avatar')[0].style.display = 'block';
-            document.getElementsByClassName('loading')[0].style.display = 'none';
+        function loadingAvatar() {
+            sleep(1200).then(()=>{
+                document.getElementsByClassName('avatar')[0].style.display = 'block';
+                document.getElementsByClassName('loading')[0].style.display = 'none';
+            });
+        }
+        function sleep(time){
+            return new Promise((resolve => setTimeout(resolve,time)));
         }
     </script>
 </head>
@@ -38,28 +43,28 @@
         <section class="side" id="side">
 
             <!-- 左栏固定开关，记得及时删除这段代码 Start-->
-            <label class="switch" style="display: none;" onchange="switchFixed()">
-                <script type="text/javaScript">
-                    function switchFixed(){
-                        var value = document.getElementById('side').style.position === 'fixed' ? 'absolute' : 'fixed';
-                        document.getElementById('side').style.position = value;
-                    }
-                </script>
-                <input id="cb" type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <style>
-                @media (min-width: 	750px){
-                    .switch{position:relative;display:inline-block!important;width:60px;height:34px;}
-                    .switch input{display:none;}
-                    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;-webkit-transition:.4s;transition:.4s;}
-                    .slider:before{position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:white;-webkit-transition:.4s;transition:.4s;}
-                    input:checked + .slider{background-color:#1abc9c;}
-                    input:focus + .slider{box-shadow:0 0 1px #1abc9c;}
-                    input:checked + .slider:before{-webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px);}.slider.round{border-radius:34px;}
-                    .slider.round:before{border-radius:50%;}
-                }
-            </style>
+<!--            <label class="switch" style="display: none;" onchange="switchFixed()">-->
+<!--                <script type="text/javaScript">-->
+<!--                    function switchFixed(){-->
+<!--                        var value = document.getElementById('side').style.position === 'fixed' ? 'absolute' : 'fixed';-->
+<!--                        document.getElementById('side').style.position = value;-->
+<!--                    }-->
+<!--                </script>-->
+<!--                <input id="cb" type="checkbox">-->
+<!--                <span class="slider round"></span>-->
+<!--            </label>-->
+<!--            <style>-->
+<!--                @media (min-width: 	750px){-->
+<!--                    .switch{position:relative;display:inline-block!important;width:60px;height:34px;}-->
+<!--                    .switch input{display:none;}-->
+<!--                    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;-webkit-transition:.4s;transition:.4s;}-->
+<!--                    .slider:before{position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:white;-webkit-transition:.4s;transition:.4s;}-->
+<!--                    input:checked + .slider{background-color:#1abc9c;}-->
+<!--                    input:focus + .slider{box-shadow:0 0 1px #1abc9c;}-->
+<!--                    input:checked + .slider:before{-webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px);}.slider.round{border-radius:34px;}-->
+<!--                    .slider.round:before{border-radius:50%;}-->
+<!--                }-->
+<!--            </style>-->
             <!-- 左侧固定开关，记得及时删除这段代码 End-->
 
             <!-- 个人肖像 -->
@@ -73,7 +78,7 @@
                         <span></span>
                     </div>
                     <!-- 头像照片 -->
-                    <img class="avatar" src="assets/images/avatar.jpg" onload="loading()">
+                    <img class="avatar" src="assets/images/avatar.jpg" onload="loadingAvatar()">
                 </section>
 
                 <h1 class="name">张大侠</h1>
@@ -110,19 +115,19 @@
                 <ul>
                     <li>
                         <label>手机</label>
-                        <a href="tel:15168285219" target="_blank">151-6828-5219</a>
+                        <a href="tel:15168285219" target="_blank">139-xxxx-xxxx</a>
                     </li>
                     <li>
                         <label>邮箱</label>
-                        <a href="mailto:ze.zh@hotmail.com" target="_blank">ze.zh@hotmail.com</a>
+                        <a href="mailto:ze.zh@hotmail.com" target="_blank">xxxxx@gmail.com</a>
                     </li>
                     <li>
                         <label>个人主页</label>
-                        <a href="http://0b11111110.com/" target="_blank">0b11111110.com/</a>
+                        <a href="https://bigheadxia.github.io" target="_blank">bigheadxia.github.io</a>
                     </li>
                     <li>
                         <label>Github</label>
-                        <a href="https://github.com/0b11111110" target="_blank">github.com/0b11111110</a>
+                        <a href="https://github.com/bigheadxia" target="_blank">github.com/bigheadxia</a>
                     </li>
                 </ul>
             </section>
@@ -163,7 +168,9 @@
             <section class="qrcode info-unit">
                 <h2><i class="fa fa-qrcode" aria-hidden="true"></i>二维码</h2>
                 <hr/>
-                <img src="https://github.com/if2er/FeZaoDuKe-Collection/blob/master/ifeees.jpg?raw=true" style="width: 100%;" alt="">
+                <div style="text-align: center;">
+                    <img src="assets/images/qr.png?raw=true" style="width: 60%;" alt="">
+                </div>
             </section>
 
             <!-- 技术栈 -->
