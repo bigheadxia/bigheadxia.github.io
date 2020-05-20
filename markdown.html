@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>个人博客主页</title>
+
+    <script src="//cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.js"></script>
+    <script src="//cdn.bootcss.com/markdown-it/4.4.0/markdown-it.min.js"></script>
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/typo.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+
+
+
+    <script>
+        function loadingAvatar() {
+            sleep(1200).then(()=>{
+                document.getElementsByClassName('avatar')[0].style.display = 'block';
+                document.getElementsByClassName('loading')[0].style.display = 'none';
+            });
+        }
+        function sleep(time){
+            return new Promise((resolve => setTimeout(resolve,time)));
+        }
+    </script>
+
+    <script>
+        window.searchMap = location.search.substr(1).split('&').reduce(function(r, it) {
+            var them = it.split('='); r[them[0]] = them[1]; return r;
+        }, {});
+        $.ajaxSetup({async: false});
+    </script>
+</head>
+<body>
+<article class="container">
+    <section class="side" id="side">
+        <section class="me">
+            <section class="portrait">
+                <div class="loading">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- 头像照片 -->
+                <img class="avatar" src="assets/images/avatar.jpg" onload="loadingAvatar()">
+            </section>
+
+            <h1 class="name">张大侠</h1>
+            <h4 class="info-job">前端开发工程师 / 杭州</h4>
+
+        </section>
+
+        <!-- 基本信息 -->
+        <section class="profile info-unit">
+            <h2>
+                <i class="fa fa-user" aria-hidden="true"></i>基本信息</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <label>个人信息</label>
+                    <span>张大侠 / 男 / 24岁</span>
+                </li>
+                <li>
+                    <label>英语水平</label>
+                    <span>CET-6</span>
+                </li>
+                <li>
+                    <label>计算机水平</label>
+                    <span>软考中级</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="contact info-unit">
+            <h2>
+                <i class="fa fa-phone" aria-hidden="true"></i>联系方式</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <label>手机</label>
+                    <a href="tel:15168285219" target="_blank">139-xxxx-xxxx</a>
+                </li>
+                <li>
+                    <label>邮箱</label>
+                    <a href="mailto:ze.zh@hotmail.com" target="_blank">xxxxx@gmail.com</a>
+                </li>
+                <li>
+                    <label>个人主页</label>
+                    <a href="https://bigheadxia.gitee.io" target="_blank">bigheadxia.github.io</a>
+                </li>
+                <li>
+                    <label>Github</label>
+                    <a href="https://github.com/bigheadxia" target="_blank">github.com/bigheadxia</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 技能点 -->
+        <section class="skill info-unit">
+            <h2>
+                <i class="fa fa-code" aria-hidden="true"></i>技能点</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <label>HTML</label>
+                    <progress value="90" max="100"></progress>
+                </li>
+                <li>
+                    <label>CSS</label>
+                    <progress value="85" max="100"></progress>
+                </li>
+                <li>
+                    <label>JavaScript</label>
+                    <progress value="85" max="100"></progress>
+                </li>
+                <li>
+                    <label>React</label>
+                    <progress value="85" max="100"></progress>
+                </li>
+                <li>
+                    <label>Node.js</label>
+                    <progress value="70" max="100"></progress>
+                </li>
+                <li>
+                    <label>小程序</label>
+                    <progress value="70" max="100"></progress>
+                </li>
+            </ul>
+        </section>
+
+        <section class="qrcode info-unit">
+            <h2><i class="fa fa-qrcode" aria-hidden="true"></i>二维码</h2>
+            <hr/>
+            <div style="text-align: center;">
+                <img src="assets/images/qr.png?raw=true" style="width: 60%;" alt="">
+            </div>
+        </section>
+    </section>
+
+    <section class="main" id="main"></section>
+</article>
+
+<footer class="footer">
+    <p>© 2020 XXX.文档最后更新时间为<time>2020年05月15日</time>.</p>
+</footer>
+
+<!-- 侧栏 -->
+<aside>
+    <ul>
+        <li>
+            <a href="https://bigheadxia.gitee.io" target="_blank">码云主页</a>
+        </li>
+        <li>
+            <a href="https://bigheadxia.github.io" target="_blank">github主页</a>
+        </li>
+        <li>
+            <a href="javascript:" onclick="history.back(-1)">返回上一页</a>
+        </li>
+    </ul>
+</aside>
+
+<script>
+    const regex1 = /(?<=\()[^)]+/;   // () 小括号
+    const regex2 = /(?<=\[)[^\]]+/;   // [] 中括号
+    $.get((searchMap.md || 'readme.md'), function(text) {
+        if (searchMap.md === undefined){
+            window.location.href="index.html";
+        }
+        console.log(searchMap.md);
+        //列表页
+        if (searchMap.md.indexOf("index.md")>0){
+            const lineContent = text.split("*");
+            lineContent.forEach((line)=>{
+                if (line != null && line !== ''){
+                    var head = line.match(regex2)[0];
+                    var linkstr = line.match(regex1)[0];
+                    var des = line.substring(line.lastIndexOf("\)")+1).trim();
+                    var loadHtml = '<section class="work info-unit">' +
+                                        '<h2><i class="fa fa-book" aria-hidden="true"></i>'+head+'</h2>' +
+                                        '<hr/>' +
+                                        '<p><a href="'+linkstr+'" style="cursor: pointer;">'+des+'</a></p>' +
+                                    '</section>';
+                    $("#main").append(loadHtml);
+                }
+            })
+        }else{
+            //详情页
+            $("#main").html(markdownit().render(text));
+        }
+    });
+</script>
+<script src="assets/js/index.js"></script>
+
+</body>
+</html>
