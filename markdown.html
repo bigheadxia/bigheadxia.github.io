@@ -81,8 +81,8 @@
             const lineContent = text.split("*");
             lineContent.forEach((line)=>{
                 if (line != null && line !== ''){
-                    var head = line.match(regex2)[0];
-                    var linkstr = line.match(regex1)[0];
+                    var head = line.match(regex2);
+                    var linkstr = line.match(regex1);
                     var des = line.substring(line.lastIndexOf("\)")+1).trim();
                     var loadHtml = '<section class="work info-unit">' +
                                         '<h2><i class="fa fa-book" aria-hidden="true"></i>'+head+'</h2>' +
