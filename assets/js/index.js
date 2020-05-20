@@ -1,1 +1,6 @@
-console.log("感谢您的浏览，期待能够加入贵公司！我的博客：https://bigheadxia.gitee.io");
+//加载左边栏
+$().ready(function () {
+    $("#head").load("common/head.html");
+    $("#side").load("common/side.html");
+    $("#footer").load("common/footer.html");
+});

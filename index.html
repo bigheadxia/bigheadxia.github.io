@@ -17,6 +17,9 @@
     <meta http-equiv="Expires" content="0" />
 <!--    <title>[简历]张大侠-前端开发工程师/杭州</title>-->
     <title>XXX-个人主页</title>
+
+    <script src="//cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.js"></script>
+
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/typo.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -36,113 +39,7 @@
 
 <body>
     <article class="container">
-        <section class="side" id="side">
-            <!-- 个人肖像 -->
-            <section class="me">
-                <section class="portrait">
-                    <div class="loading">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <!-- 头像照片 -->
-                    <img class="avatar" src="assets/images/avatar.jpg" onload="loadingAvatar()">
-                </section>
-
-                <h1 class="name">张大侠</h1>
-                <h4 class="info-job">前端开发工程师 / 杭州</h4>
-
-            </section>
-
-            <!-- 基本信息 -->
-            <section class="profile info-unit">
-                <h2>
-                    <i class="fa fa-user" aria-hidden="true"></i>基本信息</h2>
-                <hr/>
-                <ul>
-                    <li>
-                        <label>个人信息</label>
-                        <span>张大侠 / 男 / 24岁</span>
-                    </li>
-                    <li>
-                        <label>英语水平</label>
-                        <span>CET-6</span>
-                    </li>
-                    <li>
-                        <label>计算机水平</label>
-                        <span>软考中级</span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- 联系方式 -->
-            <section class="contact info-unit">
-                <h2>
-                    <i class="fa fa-phone" aria-hidden="true"></i>联系方式</h2>
-                <hr/>
-                <ul>
-                    <li>
-                        <label>手机</label>
-                        <a href="tel:15168285219" target="_blank">139-xxxx-xxxx</a>
-                    </li>
-                    <li>
-                        <label>邮箱</label>
-                        <a href="mailto:ze.zh@hotmail.com" target="_blank">xxxxx@gmail.com</a>
-                    </li>
-                    <li>
-                        <label>个人主页</label>
-                        <a href="https://bigheadxia.gitee.io" target="_blank">bigheadxia.github.io</a>
-                    </li>
-                    <li>
-                        <label>Github</label>
-                        <a href="https://github.com/bigheadxia" target="_blank">github.com/bigheadxia</a>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- 技能点 -->
-            <section class="skill info-unit">
-                <h2>
-                    <i class="fa fa-code" aria-hidden="true"></i>技能点</h2>
-                <hr/>
-                <ul>
-                    <li>
-                        <label>HTML</label>
-                        <progress value="90" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>CSS</label>
-                        <progress value="85" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>JavaScript</label>
-                        <progress value="85" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>React</label>
-                        <progress value="85" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>Node.js</label>
-                        <progress value="70" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>小程序</label>
-                        <progress value="70" max="100"></progress>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="qrcode info-unit">
-                <h2><i class="fa fa-qrcode" aria-hidden="true"></i>二维码</h2>
-                <hr/>
-                <div style="text-align: center;">
-                    <img src="assets/images/qr.png?raw=true" style="width: 60%;" alt="">
-                </div>
-            </section>
-        </section>
+        <div id="side"></div>
 
         <section class="main">
 
@@ -341,11 +238,7 @@
         </section>
     </article>
 
-
-
-    <footer class="footer">
-        <p>© 2020 XXX.文档最后更新时间为<time>2020年05月15日</time>.</p>
-    </footer>
+    <div id="footer"></div>
 
     <!-- 侧栏 -->
     <aside>
