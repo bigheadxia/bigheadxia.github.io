@@ -7,4 +7,5 @@
 * [阿波罗源码安装记录](markdown.html?md=content/阿波罗源码安装记录.md)阿波罗源码安装记录
 * [阿波罗源码安装记录](markdown.html?md=content/阿波罗源码安装记录.md)阿波罗源码安装记录
 * [阿波罗源码安装记录](markdown.html?md=content/阿波罗源码安装记录.md)阿波罗源码安装记录
-* [阿波罗源码安装记录](markdown.html?md=content/阿波罗源码安装记录.md)阿波罗源码安装记录
+* [micrometer+prometheus+grafana搭建Java程序的监控系统](markdown.html?md=content/micrometer+prometheus+grafana搭建Java程序的监控系统.md)micrometer+prometheus+grafana搭建Java程序的监控系统
+* [hadoop集群搭建核心配置文件说明](markdown.html?md=content/hadoop分布式集群搭建.md)阿波罗源码安装记录
